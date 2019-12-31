@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./vue.js"></script>
+    <title>Vue.js</title>
+</head>
+
+<body>
+    <!-- COM vue js -->
+    <div id="comercio">
+        <p>Bermudas - R$ <span>{{preco}}</span></p>
+        <button @click="total++">Adicionar</button>
+        <button @click="total--">Remover</button>
+        <span>{{total}}</span>
+        <p>Total: <span>{{preco*total}}</span></p>
+    </div>
+
+    <!-- SEM vue js -->
+    <div>
+        <p>Camisas - R$ <span class="preco"></span></p>
+        <button class="adicionar">Adicionar</button>
+        <button class="remover">Remover</button>
+        <span class="total"></span>
+        <p>Total: <span class="precoTotal"></span></p>
+    </div>
+
+    <script>
+        // Exemplo "COM Vue JS"
+        const vm = new Vue({
+            el: '#comercio',
+            data: { // transforma o item em reativo
+                preco: 69,
+                total: 0
+            }
+        })
+
+        // Exemplo "SEM Vue JS"
+        const dados = {
+            preco: 49,
+            total: 0
+        }
+
+        const preco = document.querySelector(".preco");
+        const total = document.querySelector(".total");
+        const precoTotal = document.querySelector(".precoTotal");
+        const adicionar = document.querySelector(".adicionar");
+        const remover = document.querySelector(".remover");
+
+        preco.innerText = dados.preco;
+        total.innerText = dados.total;
+        precoTotal.innerText = dados.preco * dados.total;
+
+        function incrementar() {
+            dados.total++;
+            atualizarUI();
+        }
+
+        function decrementar() {
+            dados.total--;
+            atualizarUI();
+        }
+
+        function atualizarUI() {
+            total.innerText = dados.total;
+            precoTotal.innerText = dados.total * dados.preco;
+        }
+
+        adicionar.addEventListener("click", incrementar);
+        remover.addEventListener("click", decrementar);
+    </script>
+</body>
+
+
+</html>
