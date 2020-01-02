@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="contador = contador + 100 / 2 * 5">Clique aqui</button>
+        {{contador}}
+        <button @click="ativo = !ativo">Toggle</button>
+        {{ativo}}
+        <a href="#interno" @click.prevent.once="handleClick">Link Interno</a>
+        <input type="text" @keyup.enter="handleClick">
+        <p @mousemove="handleMove">Esse é o mouse x: {{mouse.x}}</p>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                contador: 0,
+                ativo: true,
+                mouse: ""
+            },
+            methods: {
+                handleClick(event) {
+                    console.log(event.key)
+                },
+                handleMove(event) {
+                    this.mouse = event
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

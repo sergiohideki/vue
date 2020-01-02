@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./vue.js"></script>
+    <title>Exercícios</title>
+</head>
+
+<body>
+    <!--
+        Utilizando API
+        https://api.iextrading.com/1.0/stock/aapl/quote
+    
+        Adicione um evento de clique a cada <a> do html
+        acima e previna o comportamento padrão.
+    
+        Faça o fetch dos dados do href ao click e mostre na
+        interface o companyName, latestPrice, marketCap
+    -->
+    <div id="app">
+        <ul>
+            <li><a @click.prevent="fetchLink"
+                    href="https://cloud.iexapis.com/stable/stock/aapl/quote?token=pk_ce65ce9a8401462896876061da0ed90d">Apple</a>
+            </li>
+            <li><a @click.prevent="fetchLink"
+                    href="https://cloud.iexapis.com/stable/stock/googl/quote?token=pk_ce65ce9a8401462896876061da0ed90d">Google</a>
+            </li>
+            <li><a @click.prevent="fetchLink"
+                    href="https://cloud.iexapis.com/stable/stock/amzn/quote?token=pk_ce65ce9a8401462896876061da0ed90d">Amazon</a>
+            </li>
+            <li><a @click.prevent="fetchLink"
+                    href="https://cloud.iexapis.com/stable/stock/ebay/quote?token=pk_ce65ce9a8401462896876061da0ed90d">Ebay</a>
+            </li>
+            <li><a @click.prevent="fetchLink"
+                    href="https://cloud.iexapis.com/stable/stock/pypl/quote?token=pk_ce65ce9a8401462896876061da0ed90d">Paypal</a>
+            </li>
+        </ul>
+
+        <div>
+            <p>Nome companhia: {{dados.companyName}}</p>
+            <p>Preço recente: {{dados.latestPrice}}</p>
+            <p>Valor de mercado: {{dados.marketCap}}</p>
+        </div>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                dados: {}
+            },
+            methods: {
+                fetchLink(event) {
+                    const link = event.currentTarget.href
+                    fetch(link)
+                        .then(response => response.json())
+                        .then(json => this.dados = json)
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>
