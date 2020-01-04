@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="carro in carrosAzuis">
+                {{carro.marca}}
+            </li>
+            <button @click="removerCarro">Remover</button>
+        </ul>
+        <p>{{total}}</p>
+
+        <p>{{contador}}</p>
+        <button @click="contador++">Adicionar</button>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                preco: 59,
+                desconto: 10,
+                carros: [
+                    {
+                        marca: "VW",
+                        cor: "azul"
+                    },
+                    {
+                        marca: "Ford",
+                        cor: "preto"
+                    },
+                    {
+                        marca: "Tesla",
+                        cor: "azul"
+                    }
+                ],
+                contador: 0
+            },
+            computed: {
+                total() {
+                    return "R$ " + (this.preco - this.desconto)
+                },
+                carrosAzuis() {
+                    const filtro = this.carros.filter(({ cor }) => cor === "azul")
+                    return filtro;
+                }
+            },
+            methods: {
+                removerCarro(){
+                    this.carros.pop()
+                }
+            },
+            watch: {
+                carros(valorNovo, valorAntigo){ // o nome desse(método) é o nome da propriedade criada em data
+                    console.log(valorNovo)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
