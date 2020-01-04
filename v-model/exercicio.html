@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./vue.js"></script>
+    <title>Exercício</title>
+</head>
+
+<body>
+    <!-- 
+    1 - Crie um criador de botões.
+
+    O usuário poderá definir:
+    width,
+    height,
+    font-size,
+    font-family,
+    text-align,
+    background,
+    color,
+    border-radius,
+
+    As escolhas serão feitas em campos de formulário. Cada escolha deverá ser 
+    refletida em um elemento (o botão).
+    -->
+
+    <!-- <div id="app">
+        <label for="width">Width</label>
+        <input id="width" type="text" v-model="btn.width">
+        <label for="height">Height</label>
+        <input id="height" type="text" for="height" v-model="btn.height">
+        <label for="fontSize">Font size</label>
+        <input id="fontSize" type="text" v-model="btn.fontSize">
+        <label for="fontFamily">Font family</label>
+        <input id="fontFamily" type="text" v-model="btn.fontFamily">
+        <label for="textAlign">Text align</label>
+        <input id="textAlign" type="text" v-model="btn.textAlign">
+        <label for="background">Background</label>
+        <input type="color" v-model="btn.background">
+        <label for="color">Color</label>
+        <input type="color" v-model="btn.color">
+        <label for="borderRadius">Border radius</label>
+        <input id="borderRadius" type="text" v-model="btn.borderRadius">
+        <a :style="btn" href="">Clique aqui</a>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                btn: {
+                    width: "100px",
+                    height: "40px",
+                    fontSize: "15px",
+                    fontFamily: "arial",
+                    textAlign: "center",
+                    background: "",
+                    color: "",
+                    borderRadius: "1px"
+                }
+            }
+        })
+    </script>
+
+    <style>
+        label {
+            display: block;
+        }
+
+        a {
+            margin-top: 100px;
+            display: block;
+        }
+    </style> -->
+
+
+
+    <!-- 2 - Crie um formulário com, nome, email, telefone e mensagem.
+    Ao clicar em enviar, as informações preenchidas no formulário
+    devem aparecer abaixo do mesmo. (previna o comportamento padrão do botão enviar) 
+    -->
+
+    <div id="app">
+        <label v-if="estado">{{nome}}</label>
+        <input type="text" v-model="nome" placeholder="Nome">
+        <label v-if="estado">{{email}}</label>
+        <input type="text" v-model.trim="email" placeholder="Email">
+        <label v-if="estado">{{telefone}}</label>
+        <input type="text" v-model.number="telefone" placeholder="Telefone">
+        <label v-if="estado">{{mensagem}}</label>
+        <textarea name="mensagem" id="mensagem" v-model="mensagem"></textarea>
+        <input @click.prevent="enviar" type="submit">
+        <ul>
+            <li v-for="(valor,chave) in resultado">
+                {{chave}} : {{valor}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                nome: "",
+                email: "",
+                telefone: "",
+                mensagem: "",
+                resultado: {}
+            },
+            methods: {
+                enviar() {
+                    this.resultado = {
+                        nome: this.nome,
+                        email: this.email,
+                        telefone: this.telefone,
+                        mensagem: this.mensagem
+                    }
+                }
+            }
+        })
+    </script>
+
+    <style>
+
+    </style>
+
+
+</body>
+
+</html>

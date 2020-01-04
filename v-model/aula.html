@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input v-model="nome"> <!-- two-way-->
+        <input :value="endereco"> <!-- one-way-->
+
+        <input v-model.lazy="lazy">
+        <input type="text" v-model.number="ano"> {{ano}}
+
+        <input type="checkbox" id="receberEmail" v-model="receberEmail">
+        <label for="receberEmail">Receber Email</label>
+        {{receberEmail}}
+        <p>Nome:{{nome}}</p>
+        <p>Endereço:{{endereco}}</p>
+        <p>Lazy:{{lazy}}</p>
+        
+        <input v-model.trim="email"> Email:{{email}}
+
+        <div>
+            <input type="radio" name="azul" id="azul" v-model="cor" value="azul">
+            <label for="azul">Azul</label>
+            <input type="radio" name="vermelho" id="vermelho" v-model="cor" value="vermelho">
+            <label for="vermelho">Vermelho</label>
+            <input type="radio" name="verde" id="verde" v-model="cor" value="verde">
+            <label for="verde">Verde</label>
+        </div>
+        {{cor}}
+
+        <div>
+            <select v-model="fruta">
+                <option disabled value="">Selecione uma fruta</option>
+                <option value="banana">Banana</option>
+                <option value="morango">Morango</option>
+                <option value="uva">Uva</option>
+            </select>
+            {{fruta}}
+        </div>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                nome: "Sergio",
+                endereco: "Hermenegildo Romanini",
+                email: "sergio@developer.com",
+                receberEmail: true,
+                cor: "",
+                fruta: "",
+                lazy: "",
+                ano: 0
+            }
+        })
+    </script>
+</body>
+
+</html>
