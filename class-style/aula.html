@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p :class="[cor, {ativo: estaAtivo}]">Texto azul</p>
+        <p :class="{ativo: estaAtivo, verde: elementoVerde}">Mostrar texto</p>
+
+        <button @click="estaAtivo = !estaAtivo">Click</button>
+
+        <a :style="{background: bgColor, fontSize: tamanho + 'px'}">estilize Link</a>
+        <button @click="tamanho++">Aumentar</button>
+
+        <p :style="estiloBotao">Novo texto</p>
+        <p :style="estiloParagrafo">Novo texto</p>
+
+        {{estiloParagrafo}}
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                cor: "azul",
+                background: "vermelho",
+                estaAtivo: false,
+                elementoVerde: true,
+                bgColor: "tomato",
+                tamanho: 20,
+                estiloBotao: {
+                    background: "tomato",
+                    fontSize: "20px",
+                    color: "white"
+                }
+            },
+            computed: {
+                estiloParagrafo(){
+                    const tamanho = Math.random() * 100
+                    return {
+                        fontSize: tamanho + 'px'
+                    }
+                }
+            }
+        })
+    </script>
+
+    <style>
+        .vermelho {
+            background: red
+        }
+
+        .azul {
+            color: blue
+        }
+
+        .ativo {
+            background: red
+        }
+
+        .verde {
+            color: green
+        }
+    </style>
+</body>
+
+</html>
