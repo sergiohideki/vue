@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./vue.js"></script>
+    <title>Exercício</title>
+</head>
+
+<body>
+    <!--
+    Utilizando a api: https://viacep.com.br/ws/04538133/json/
+    Mostre o cep, logradouro, complemento, bairro, localidade e uf
+    do que for retornado.
+
+    Use o arquivo json da aula, para listar os cursos e as matérias.
+    -->
+
+    <div id="app">
+        <ul>
+            <li v-for="dado, key in dadosCep">{{key}}: {{dado}}</li>
+        </ul>
+        <button @click="fetchApi">Buscar cep</button>
+        <div v-for="{curso, aulas, link}, key in dadosCursos">
+            <h1><a :href="link">{{curso}}</a></h1>
+            <ul>
+                <li v-for="aula in aulas">
+                    {{aula.nome}}, {{aula.tempo}}
+                </li>
+            </ul>
+        </div>
+        <button @click="fetchCursos">Busca cursos</button>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                dadosCep: {},
+                dadosCursos: {}
+            },
+            methods: {
+                fetchApi() {
+                    fetch("https://viacep.com.br/ws/04538133/json/")
+                        .then(response => response.json())
+                        .then(json => this.dadosCep = json)
+                },
+                fetchCursos() {
+                    fetch('./cursos.json')
+                        .then(response => response.json())
+                        .then(json => { this.dadosCursos = json, console.log(json) })
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

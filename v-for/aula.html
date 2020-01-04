@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <!-- {nome, populacao} (desestruturação de ES6) e utilizado para não 
+                ficar acessando dado.nome.nome e sim quando quer acessar algum dado
+                do objeto
+            -->
+            <li v-for="({nome, populacao}, key) in estados" :key="key">
+                {{nome}}
+                {{populacao}}
+            </li>
+            <div v-for="n in 10">
+                {{n}}
+            </div>
+            <ul>
+                <li v-for="item in lista">{{item}} </li>
+            </ul>
+            <button @click="removerItem">remover Item</button>
+            <button @click="adicionarItem">adicionar Item</button>
+            <button @click="modificarItem">alterar Item</button>
+        </ul>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                lista: ["item 1", "item 2", "item 3"],
+                estados: {
+                    sp: {
+                        populacao: "45 milhões",
+                        nome: "São Paulo"
+                    },
+                    mg: {
+                        populacao: "21 milhões",
+                        nome: "Minas Gerais"
+                    },
+                    rj: {
+                        populacao: "17 milhões",
+                        nome: "Rio de Janeiro"
+                    }
+                }
+            },
+            methods: {
+                removerItem(){
+                    this.lista.pop()
+                },
+                adicionarItem(){
+                    this.lista.push("item " + (this.lista.length+1))
+                },
+                modificarItem(){
+                    this.$set(this.lista, 0, "Banana")
+                    // this.lista[0] = "Banana"
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>

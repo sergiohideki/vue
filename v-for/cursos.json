@@ -1,0 +1,38 @@
+[
+    {
+        "curso": "Web Design Completo",
+        "link": "https://origamid.com/curso/web-design-completo/",
+        "aulas": [
+            {
+                "nome": "HTML e CSS",
+                "tempo": "22min"
+            },
+            {
+                "nome": "Javascript",
+                "tempo": "32min"
+            },
+            {
+                "nome": "Formulários",
+                "tempo": "12min"
+            }
+        ]
+    },
+    {
+        "curso": "Javascript Completo",
+        "link": "https://origamid.com/curso/javascript-completo-es6/",
+        "aulas": [
+            {
+                "nome": "ACF",
+                "tempo": "24min"
+            },
+            {
+                "nome": "Temas",
+                "tempo": "13min"
+            },
+            {
+                "nome": "Plugins",
+                "tempo": "32min"
+            }
+        ]
+    }
+]
