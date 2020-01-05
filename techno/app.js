@@ -4,6 +4,7 @@ const vm = new Vue({
         produtos: [],
         produto: false,
         carrinho: [],
+        carrinhoAtivo: false,
         mensagemAlerta: "Item adicionado",
         alertaAtivo: false
     },
@@ -44,6 +45,9 @@ const vm = new Vue({
         fecharModal({ target, currentTarget }) {
             if (target === currentTarget) this.produto = false;
         },
+        clickForaCarrinho({ target, currentTarget }) {
+            if (target === currentTarget) this.carrinhoAtivo = false;
+        },
         adicionarItem() {
             this.produto.estoque--
             const { id, nome, preco } = this.produto //desestruturar
@@ -77,7 +81,6 @@ const vm = new Vue({
             history.pushState(null, null, `#${hash}`)
         },
         carrinho(event) {
-            console.log('event', event)
             window.localStorage.carrinho = JSON.stringify(this.carrinho);
         }
     },
