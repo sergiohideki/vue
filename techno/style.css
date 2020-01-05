@@ -1,0 +1,54 @@
+body, h1, h2, ul, li {
+    /*resetar a pagina*/
+    padding: 0px;
+    margin: 0px;
+}
+
+ul {
+    /* tirar a bolinha de lista*/
+    list-style: none;
+}
+
+* {
+    /* acumula o valor da borda e padding pra cada elemento vue*/
+    box-sizing: border-box;
+}
+
+body {
+    /* faz um efeito gradiente que começa normal a cor preta até 30%*/
+    background: linear-gradient(to right, #1a1a1a 30%, #fff 30%);
+    font-family: 'Noto Serif', serif;
+}
+
+#app {
+    padding: 0 80px;
+}
+
+/* LISTA PRODUTOS */
+
+.produtos {
+    max-width: 900px;
+    margin: 100px auto 0 auto
+}
+
+.produto {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    background: #ffffff;
+    box-shadow: 0 0 2rem rgba(0, 0, 0, .1);
+}
+
+.produto_img {
+    max-width: 300px;
+    margin-right: 40px;
+}
+
+.produto_titulo {
+    font-size: 3rem;
+    line-height: 1;
+}
+
+.produto_preco {
+    color: rgba(0, 0, 0, .5);
+}
