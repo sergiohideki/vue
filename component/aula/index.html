@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Component</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <botao-contador></botao-contador>
+        <botao-contador></botao-contador>
+        <botao-contador></botao-contador>
+        <menu-principal></menu-principal>
+    </div>
+
+
+    <script type="module"> //type="module" indica que vai poder importa e exporta código
+        import BotaoContador from './BotaoContador.js'
+        import MenuPrincipal from './MenuPrincipal.js'
+
+        // Vue.component("BotaoContador", BotaoContador) // global
+        Vue.component("MenuPrincipal", MenuPrincipal) // global
+
+        const vm = new Vue({ // local
+            el: "#app",
+            components: {
+                BotaoContador
+            }
+        })
+    </script>
+</body>
+
+</html>
